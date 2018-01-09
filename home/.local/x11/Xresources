@@ -1,0 +1,4 @@
+! "${MY_X11_HOME}"/Xresources
+#include "xresources.d/xdefaults"
+#include "xresources.d/xft"
+#include "xresources.d/urxvt"

@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# "${MY_BASH_HOME}"/bash_histconf
+
+HISTFILE="${MY_LOG_HOME}"/bash_history
+HISTFILESIZE=
+HISTSIZE=
+HISTCONTROL=ignoredups:erasedups
+#HISTIGNORE=
+
+shopt -s histappend
+shopt -s cmdhist
+
+PROMPT_COMMAND="history -a"
+
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'

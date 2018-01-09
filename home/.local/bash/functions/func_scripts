@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# functions mainly or exclusively useful in scripts
+set -e -u
+
+## locate the base-dir of a script
+base_dir(){
+	if [[ -L $0 ]]; then
+		script_file=$(readlink $0)
+		script_path=$(dirname "${script_file}")
+	else	
+		script_file=$(readlink -f ${0})
+		script_path=$(readlink -f ${0%/*})
+	fi
+}
+export -f base_dir
+
+## export all functions of a script
+export_funcs (){ eval "$(declare -F | sed -e 's/-f /-fx /')"; }
+export -f export_funcs
+
+## interrupt a script with user prompt
+pause_script(){ read -p "$*"; }
+#pause_script 'The script was paused by the pause-function. Press Enter to continue.'
+export -f pause_script

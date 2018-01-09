@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# "${MY_BASH_HOME}"/functions/func_terminfo
+
+export -f terminfo_features
+export -f terminfo_bitdepth
+export -f terminfo_colors
+
+## shows colorbitdepth of available terminfo
+terminfo_bitdepth ()
+{
+    for T in `find /usr/share/terminfo -type f -printf '%f '`;do echo "$T `tput -T $T colors`";done|sort -nk2
+}
+
+## show all available terminal colors
+terminfo_colors ()
+{
+    (x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)
+}
+
+## show all available terminal features
+terminfo_features ()
+{
+    infocmp -1 | sed -nu 's/^[ \000\t]*//;s/[ \000\t]*$//;/[^ \t\000]\{1,\}/!d;/acsc/d;s/=.*,//p'|column -c80
+}

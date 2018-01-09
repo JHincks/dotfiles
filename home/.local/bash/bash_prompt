@@ -1,0 +1,19 @@
+# #!/bin/bash
+#
+# "${MY_BASH_HOME}"/bash_prompt
+
+## simple prompt with red for root and green for users
+## adopted from LFS - http://www.linuxfromscratch.org/
+
+DEFAULT="\[\e[39m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+YELLOW="\[\e[1;33m\]"
+
+if [[ "${$EUID}" == 0 ]]; then
+	PS1="${RED}\u [ ${DEFAULT}\w${RED} ]# ${DEFAULT}"
+elif [[ "${$EUID}" -gt 100 ]]; then
+	PS1="${GREEN}\u [ ${DEFAULT}\w${GREEN} ]\$ ${DEFAULT}"
+else
+	PS1="${YELLOW}\u [ ${DEFAULT}\w${YELLOW} ]\$ ${DEFAULT}"
+fi

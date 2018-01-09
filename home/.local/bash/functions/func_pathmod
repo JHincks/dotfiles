@@ -1,0 +1,84 @@
+#!/bin/bash
+#
+# "${MY_BASH_HOME}"/functions/func_pathmod
+
+export -f pathmod_remove
+export -f pathmod_append
+export -f pathmod_prepend
+#export -f _pathmod_check
+export -f pathmod_consolidate
+
+
+function pathmod_remove()
+{
+    typeset -n dfp_variable="$1"
+    typeset value="$2"
+
+    if [[ "$dfp_variable" == "$value" ]]; then
+        variable=""
+    else
+        dfp_variable="${dfp_variable/#${value}:/}"
+        dfp_variable="${dfp_variable/%:${value}/}"
+        dfp_variable="${dfp_variable//:${value}:/:}"
+    fi
+}
+
+
+function pathmod_append()
+{
+    typeset -n sp_variable="$1"
+    typeset value="$2"
+
+    if [[ -z "$sp_variable" ]]; then
+        sp_variable="$value"
+    elif [[ "$sp_variable" != "$value" ]]; then
+        pathmod_remove sp_variable "$value"
+        sp_variable="$( printf '%s:%s' "$sp_variable" "$value" | tr -s ':' )"
+    fi
+}
+
+function pathmod_prepend()
+{
+    typeset -n pp_variable="$1"
+    typeset value="$2"
+
+    if [[ -z "$pp_variable" ]]; then
+        pp_variable="$value"
+    elif [[ "$pp_variable" != "$value" ]]; then
+        pathmod_remove pp_variable "$value"
+        pp_variable="$( printf '%s:%s' "$value" "$pp_variable" | tr -s ':' )"
+    fi
+}
+
+function _pathmod_check()
+{
+    typeset -n eip_variable="$1"
+    typeset value="$2"
+
+    typeset tmppath="$eip_variable"
+
+    pathmod_remove tmppath "$value"
+
+    if [[ "$tmppath" == "$eip_variable" ]]; then
+        return 1
+    else
+        return 0
+    fi
+}
+
+function pathmod_consolidate()
+{
+    typeset -n cp_variable="$1"
+
+    typeset IFS=':'
+    typeset tmpvar
+    typeset element
+
+    for element in $cp_variable; do
+        if ! _exists_in_path tmpvar "$element"; then
+            pathmod_append tmpvar "$element"
+        fi
+    done
+
+    cp_variable="$tmpvar"
+}

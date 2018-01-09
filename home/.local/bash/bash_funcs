@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# "${MY_BASH_HOME}"/bash_funcs
+
+for file in "${MY_BASH_HOME}"/functions/func_*; do
+	[[ ${LOGINLOG} ]] && LOGINLOG="${LOGINLOG}"$'\nSourcing "'"${file}"'"'
+	[[ -f "${file}" ]] && . "${file}" &&
+	[[ ${LOGINLOG} ]] && LOGINLOG="${LOGINLOG}"$'\n☺ "'"${file}"'" was sourced successfully.'
+done
+
+
+###  miscellaneous one-liner-functions  ###
+
+## load (custom) keymap
+cat_xkbmap(){ setxkbmap "$(cat "${file}")"; }
+export -f cat_xkbmap
+
+## reduce xev's output to the xkeycode and name of the keysym
+xev_awk (){ xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'; }
+export -f xev_awk
+
+

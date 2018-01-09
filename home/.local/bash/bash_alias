@@ -1,0 +1,82 @@
+#!/bin/bash
+#
+# "${MY_BASH_HOME}"/bash_alias
+
+### meaning of capital letters inside of an alias ###
+## ~ as alias' first character: --force (or similiar)
+## ~ as alias' last character:  with root-rights
+## ~ neither first nor last: with root-rights and including arguments
+##   (letters after a capital give a hint on the arguments used in the alias)
+
+### ABC ###
+#alias XYZ=''
+
+### cd ###
+alias ..='cd ..'
+alias cd..='cd ..'
+
+### chmod ###
+alias chmod='chmod -c'
+alias liberate='chmod -Rc a+rwX'
+alias liberatE='sudo chmod -Rc a+rwX'
+
+### chown ###
+alias chown='chown -c'
+alias reclaim='chown -hRc ${USER}:users /home/${USER}'
+alias reclaiM='sudo chown -hRc ${USER}:users /home/${USER}'
+
+### cp & mv & rm ###
+alias cp='cp -v'
+alias cpr='cp -vR'
+alias mv='mv -v'
+alias rm='rm -v'
+alias Rm='rm -vRd'
+
+### git ###
+alias gc='git clone'
+
+### grep ###
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+
+### grub2 ###
+alias grupdate='grub-mkconfig -o /boot/grub/grub.cfg'
+alias grupdatE='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+### ln ###
+alias lns='ln -svi'
+alias lnr='ln -svir'
+
+### ls ###
+alias ls='ls --all --color=auto'
+
+### pacman ###
+alias paci='pacman -Si'
+alias pacn='pacman -S --needed'
+alias pacN='sudo pacman -S --needed'
+alias pacy='pacman -Sy'
+alias pacY='sudo pacman -Sy'
+alias pacs='pacman -S'
+alias pacS='sudo pacman -S'
+alias pacß='pacman -Ss'
+alias pacu='pacman -U'
+alias pacU='sudo pacman -U'
+
+### qtile ###
+## test config file for syntax errors
+alias chqcfg='python2 -m py_compile ~/.config/qtile/config.py'
+
+### sudo ###
+alias sudo='sudo '
+
+### useradd ###
+alias usrad='useradd -m -g users -G wheel,storage,power -s /bin/bash'
+alias usraD='sudo useradd -m -g users -G wheel,storage,power -s /bin/bash'
+
+### userdel ###
+alias usrdl='userdel -fr'
+alias usrdL='sudo userdel -fr'
+
+### xmodmap ###
+alias showmodmap='xmodmap -pke'

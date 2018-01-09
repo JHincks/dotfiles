@@ -1,0 +1,80 @@
+! "${MY_X11_HOME}"/xresources.d/xdefaults
+
+#define BG		#6D7278
+#define FG		#FFFCD6
+#define CRSR	#759CFF
+
+#define Black	#4E4F56
+#define DGray	#78736D
+#define Red		#FF6666
+#define Orange	#FFB870
+#define Brown	#B29376
+#define Yellow	#FDFF70
+#define LGreen	#B7FF70
+#define Lime	#70FF70
+#define Blue	#70B7FF
+#define Purple	#7070FF
+#define Magenta #DA8FDB
+#define Rosa	#FFD6D6
+#define Pine	#77B276
+#define Cyan	#BEFFB8
+#define LGray	#99A8A4
+#define White	#E6E5FF
+
+*.foreground:  FG
+*.background:  BG
+*.cursorColor: CRSR
+! black
+*.color0:      Black
+*.color8:      DGray
+! red
+*.color1:      Red
+*.color9:      Orange
+! green
+*.color2:      Brown
+*.color10:     Yellow
+! yellow
+*.color3:      LGreen
+*.color11:     Lime
+! blue
+*.color4:      Blue
+*.color12:     Purple
+! magenta
+*.color5:      Magenta
+*.color13:     Rosa
+! cyan
+*.color6:      Green
+*.color14:     Cyan
+! white
+*.color7:      LGray
+*.color15:     White
+
+
+!*.foreground:  #EEE6A0
+!*.background:  #232629
+!*.cursorColor:  #FFF1D6
+! black
+!*.color0:      #414748
+!*.color8:      #2C2E30
+! red
+!*.color1:      #AC2021
+!*.color9:      #BE6196
+! green
+!*.color2:      #53B54A
+!*.color10:     #ACE193
+! yellow
+!*.color3:      #DC8309
+!*.color11:     #EDE43B
+! blue
+!*.color4:      #2845D7
+!*.color12:     #0292F2
+! magenta
+!*.color5:      #7878FA
+!*.color13:     #D3695F
+! cyan
+!*.color6:      #1D9F6A
+!*.color14:     #9DD7BC
+! white
+!*.color7:      #B5774A
+!*.color15:     #FFF1D6
+
