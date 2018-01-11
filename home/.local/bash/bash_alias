@@ -17,13 +17,13 @@ alias cd..='cd ..'
 
 ### chmod ###
 alias chmod='chmod -c'
-alias liberate='chmod -Rc a+rwX'
-alias liberatE='sudo chmod -Rc a+rwX'
+alias liberate='chmod -R a+rwX'
+alias liberatE='sudo chmod -R a+rwX'
 
 ### chown ###
 alias chown='chown -c'
-alias reclaim='chown -hRc ${USER}:users /home/${USER}'
-alias reclaiM='sudo chown -hRc ${USER}:users /home/${USER}'
+alias reclaim='chown -hR ${USER}:users /home/${USER}'
+alias reclaiM='sudo chown -hR ${USER}:users /home/${USER}'
 
 ### cp & mv & rm ###
 alias cp='cp -v'
